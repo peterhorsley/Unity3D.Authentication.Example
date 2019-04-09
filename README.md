@@ -35,8 +35,15 @@ You can login with `alice/alice` or `bob/bob`
 * Add an Android Unity plugin project to handle auth redirects (see AndroidUnityPlugin project).
 * You will need to copy classes.jar from your Unity install folder e.g. C:\Program Files\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\Variations\mono\Release\Classes\classes.jar to AndroidUnityPlugin/app/libs.
 * This project contains an activity that handles auth redirects and some build scripts to export the project as a JAR file.
-* To build this project, open it in Android Studio and run the 'exportJar' gradle task.  This will produce AndroidUnityPlugin.jar in /Assets/Plugins/Android/ folder.
 * Create/modify Assets/Plugins/Android/AndroidManifest.xml to include the OAuthRedirectActivity, ensuring it has the redirect URL specified in the data element's schema attribute.
+
+## Important: Unity Version Update
+
+* Use with Unity 2018.3
+* When using Unity in a newer version, it may be necessary to copy the classes.jar file from:
+   C:\Program Files\Unity 2018.x\Editor\Data\PlaybackEngines\AndroidPlayer\Variations\mono\Release\Classes\classes.jar
+   to:
+   \AndroidUnityPlugin\app\libs\classes.jar
 
 ## References
 
