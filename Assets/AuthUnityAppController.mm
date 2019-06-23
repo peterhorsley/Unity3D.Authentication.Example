@@ -5,12 +5,11 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
 @implementation AuthUnityAppController
 - (BOOL) application:(UIApplication*)application
             openURL:(NSURL*)url
-            sourceApplication:(NSString*)sourceApplication
-            annotation:(id)annotation
+            options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
     NSLog(@"url received %@",url);
     // call the parent implementation
-    [super application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    [super application:application openURL:url options:options];
     if (!url)
         return NO;
 
@@ -18,7 +17,6 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
         if ([url.host isEqualToString:@"callback"]) {
             if (url.query) {
                 const char * queryString = [url.query UTF8String];
-                NSString *nsQueryString = [NSString stringWithUTF8String:queryString];                
                 NSLog(@"received auth reply with query string");
                 UnitySendMessage("SignInCanvas", "OnAuthReply", queryString);
             } else {
