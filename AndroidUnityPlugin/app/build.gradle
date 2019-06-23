@@ -14,8 +14,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }    
+    apply plugin: 'com.android.library'
+
+    afterEvaluate {
+        generateReleaseBuildConfig.enabled = false
     }
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -26,7 +31,7 @@ dependencies {
 }
 
 task exportJar(type: Copy) {
-    from('build/intermediates/bundles/release/classes.jar')
+    from('build/intermediates/packaged-classes/release/classes.jar')
     into('../../Assets/Plugins/Android')
     include('classes.jar')
     rename('classes.jar', 'AndroidUnityPlugin.jar')
