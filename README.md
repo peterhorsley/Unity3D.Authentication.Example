@@ -19,6 +19,14 @@ You can login with `alice/alice` or `bob/bob`
 * You must then move Newtonsoft.Json.dll from Assets/UnityPackages/JsonNet/ to the same location as your OidcClient binaries.
 * Add link.xml and mcs.rsp files to your Assets folder.
 
+## Unity Scene configuration
+
+* It's important to note that the iOS and Android specific browser handling uses Unity's UnitySendMessage() function to notify the C# code of auth replies:
+
+UnitySendMessage("SignInCanvas", "OnAuthReply", queryString);
+
+So it's expected that your sign-in scene has a GameObject called SignInCanvas that has a script attached with  function OnAuthReply, as demonstrated in the example scene in this repo.
+
 ## iOS support
 
 * Derive an objective-c class from UnityAppController to handle auth redirects (see OAuthUnityAppController.mm).
