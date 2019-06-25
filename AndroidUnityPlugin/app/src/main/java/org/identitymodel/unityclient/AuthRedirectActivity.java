@@ -30,7 +30,7 @@ public class AuthRedirectActivity extends Activity {
                 UnityPlayer.UnitySendMessage("SignInCanvas", "OnAuthReply", query);
             }else {
                 Log.v(TAG, "Data uri without query");
-                UnityPlayer.UnitySendMessage("AuthenticationReplyHandler", "OnAuthReply", "");
+                UnityPlayer.UnitySendMessage("SignInCanvas", "OnAuthReply", "");
             }
         }
 
