@@ -38,3 +38,7 @@ buildlog.txt
 
 # Google Play Services Resolver
 ProjectSettings/AndroidResolverDependencies.xml
+
+/[Pp]ackages/*
+!/[Pp]ackages/manifest.json
+!/[Pp]ackages/packages-lock.json
