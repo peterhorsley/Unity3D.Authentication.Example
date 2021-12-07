@@ -44,7 +44,20 @@ namespace Assets
             var options = new OidcClientOptions()
             {
                 Authority = "https://demo.identityserver.io/",
-                ClientId = "native.code",
+                
+                // NOTE: This config was modified from the ones in examples.
+                // Using the values in the examples for `OidcClientOptions`
+				// was giving "unauthorized client unknown client or client not enabled" error
+				// the first time page was loaded.
+				//
+				// The value for `ClientId` id is modified, and the key `ClientSecret`
+				// (which was omitted) is added.
+				// See: https://stackoverflow.com/a/65198297/3622300
+				//
+				// Probably a setup change was not reflected in existing examples.
+                ClientId = "interactive.public",
+                ClientSecret = "secret",
+                
                 Scope = "openid profile email",
                 // Redirect (reply) uri is specified in the AndroidManifest and code for handling
                 // it is in the associated AndroidUnityPlugin project, and OAuthUnityAppController.mm.
